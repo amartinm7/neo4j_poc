@@ -1,0 +1,99 @@
+plugins {
+	id 'application'
+	id 'idea'
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'org.jetbrains.kotlin.jvm' version '1.3.61'
+	id 'org.jetbrains.kotlin.plugin.spring' version '1.3.61'
+	id 'io.gitlab.arturbosch.detekt' version '1.0.0.RC9.2'
+	id 'org.jetbrains.kotlin.plugin.jpa' version '1.3.61'
+}
+
+// apply from: './gradle/build-git.gradle'
+apply from: './gradle/build-integration-test.gradle'
+apply plugin: 'kotlin-jpa'
+
+
+group = 'com.amm.neo4jpoc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+mainClassName = 'com.amm.neo4jpoc.infrastructure.framework.Application'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	//implementation("org.springframework.boot:spring-boot-starter-mustache")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	//implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	// Swagger Api docs
+	implementation("io.springfox:springfox-swagger2:2.7.0")
+	implementation("io.springfox:springfox-swagger-ui:2.7.0")
+	//
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	// Database
+	//implementation 'org.neo4j.driver:neo4j-java-driver-spring-boot-starter:4.0.0'
+	implementation "org.springframework.data:spring-data-neo4j"
+	//implementation "org.springframework.boot:spring-boot-starter-data-neo4j"
+	//implementation("org.neo4j:neo4j:3.4.0")
+
+	implementation "org.neo4j:neo4j-ogm-embedded-driver:3.2.3"
+	implementation "org.neo4j:neo4j-ogm-http-driver:3.2.3"
+	implementation "org.neo4j:neo4j-ogm-bolt-driver:3.2.3"
+
+	testImplementation 'org.neo4j:neo4j-ogm-test:3.1.2'
+
+	//	implementation("org.neo4j:neo4j-bolt:3.4.0")
+//	implementation("org.neo4j:neo4j-jdbc-driver:3.4.0")
+
+	//
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.security:spring-security-test"){
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation("io.mockk:mockk:1.9.3")
+	testImplementation('com.willowtreeapps.assertk:assertk-jvm:0.13')
+	testImplementation("io.rest-assured:spring-mock-mvc:3.1.1")
+	testImplementation('org.testcontainers:testcontainers:1.11.1')
+}
+
+test {
+	useJUnitPlatform()
+}
+
+compileKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+
+compileTestKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+
+compileIntegrationTestKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+
+subprojects {
+	// This makes Quality Gate work fine with multimodule projects
+	shipReports {
+		enabled = false
+	}
+}
+
+

@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: "OFF"
+  profiles:
+    active: dev
+#  datasource:
+#    driver-class-name: org.neo4j.jdbc.bolt.BoltDriver
+#    url: jdbc:neo4j:bolt://127.0.0.1:7688/?nossl
+
+#management:
+#  health:
+#    neo4j:
+#      enabled:
+
+#org.neo4j.driver.uri: bolt://localhost:7687
+#org.neo4j.driver.authentication.username: neo4j
+#org.neo4j.driver.authentication.password: neo4j
