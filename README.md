@@ -1,5 +1,11 @@
 # neo4jpoc
 
+## Swagger doc
+http://localhost:8080/swagger-ui.html
+
+## neo4j console
+http://localhost:7474/browser/
+
 actuator
 http://localhost:8080/actuator/health
 

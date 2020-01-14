@@ -2,6 +2,7 @@ package com.amm.neo4jpoc.infrastructure.framework.repository
 
 import com.amm.neo4jpoc.application.getmovies.GetMovieServiceResponse
 import com.amm.neo4jpoc.domain.Movie
+import org.neo4j.ogm.annotation.GeneratedValue
 import org.neo4j.ogm.annotation.Id
 import org.neo4j.ogm.annotation.NodeEntity
 import org.springframework.data.repository.CrudRepository
@@ -52,9 +53,9 @@ fun JpaMovie.toGetMovieServiceResponse () =
     )
 
 @NodeEntity
-data class JpaMovie(
-    @Id val id: Long,
-    val title: String,
-    val author: String,
-    val year: String
+class JpaMovie(
+    @Id var id: Long,
+    var title: String,
+    var author: String,
+    var year: String
 )

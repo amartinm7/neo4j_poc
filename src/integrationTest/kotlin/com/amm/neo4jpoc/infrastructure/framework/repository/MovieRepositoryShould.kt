@@ -5,7 +5,10 @@ import com.amm.neo4jpoc.domain.Movie
 import com.amm.neo4jpoc.infrastructure.framework.SpringBootIntegrationWithDocker
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration
+import org.springframework.context.annotation.Import
 
+@Import(Neo4jDataAutoConfiguration::class)
 class MovieRepositoryShould: SpringBootIntegrationWithDocker() {
 
     @Autowired

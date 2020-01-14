@@ -38,7 +38,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-mustache")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	// implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	// Swagger Api docs
@@ -50,6 +50,7 @@ dependencies {
 
 	// Database
 	implementation "org.springframework.boot:spring-boot-starter-data-neo4j"
+	implementation "org.neo4j:neo4j-ogm-http-driver:3.2.3"
 
 	//
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -4,14 +4,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.runApplication
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.transaction.annotation.EnableTransactionManagement
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 @SpringBootApplication
 @EnableSwagger2
 @EnableNeo4jRepositories ("com.amm.neo4jpoc.infrastructure.framework.repository")
-@EnableWebSecurity
+// @EnableWebSecurity
 @EntityScan ("com.amm.neo4jpoc.infrastructure.framework.repository")
 class Application
 

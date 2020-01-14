@@ -32,6 +32,7 @@ class GetMoviesHttpResponse (
 )
 
 class GetMovieHttpResponse (
+    @JsonProperty(value = "id") val id: Long,
     @JsonProperty(value = "title") val title: String,
     @JsonProperty(value = "author") val author: String,
     @JsonProperty(value = "year") val year: String

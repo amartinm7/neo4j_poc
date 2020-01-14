@@ -22,11 +22,6 @@ class ApplicationShould: SpringBootIntegrationWithDocker() {
     }
 
     @Test
-    fun `should be healthyXX`() {
-        //TODO
-    }
-
-    //@Test
     fun `should be healthy`() {
         RestAssuredMockMvc.given()
             .`when`()["/actuator/health"]
@@ -35,7 +30,7 @@ class ApplicationShould: SpringBootIntegrationWithDocker() {
             .body("status", Matchers.equalTo("UP"))
     }
 
-    //@Test
+    @Test
     fun `should give info`() {
         RestAssuredMockMvc.given()
             .`when`()["/actuator/info"]
@@ -43,7 +38,7 @@ class ApplicationShould: SpringBootIntegrationWithDocker() {
             .assertThat(MockMvcResultMatchers.status().isOk)
     }
 
-    //@Test
+    @Test
     fun `should not expose shutdown endpoint`() {
         RestAssuredMockMvc.given()
             .`when`()["/actuator/shutdown"]
