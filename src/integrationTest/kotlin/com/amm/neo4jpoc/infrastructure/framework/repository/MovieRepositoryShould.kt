@@ -22,6 +22,8 @@ class MovieRepositoryShould: SpringBootIntegrationWithDocker() {
             author = "Sam Mendes",
             year = "1999"
         )
-        assertThat { movieRepository.save(movie) }.returnedValue { movie }
+        assertThat {
+            movieRepository.save(movie)
+        }.returnedValue { movie }
     }
 }
