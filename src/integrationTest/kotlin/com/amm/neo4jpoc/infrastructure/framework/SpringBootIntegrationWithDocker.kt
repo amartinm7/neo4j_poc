@@ -24,6 +24,8 @@ abstract class SpringBootIntegrationWithDocker {
         val docker: Unit = KotlinDockerComposeContainer(File("docker-compose.yml"))
             .withLocalCompose(true)
             .waitingFor("neo4j", Wait.defaultWaitStrategy())
-            .start()
+            //.withExposedService("neo4j", 7474, Wait.forListeningPort())
+            //.withExposedService("neo4j", 7474, Wait.forHttp("/actuator/health").forStatusCode(200))
+        .start().let { Thread.sleep(5000) }
     }
 }

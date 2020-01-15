@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
+
 @AutoConfigureMockMvc
 class ApplicationShould: SpringBootIntegrationWithDocker() {
 
